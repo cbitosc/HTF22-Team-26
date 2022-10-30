@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.2.2/cerulean/bootstrap.min.css" 
+    integrity="sha512-9u5YwIpV3mbAd1ocXZRz1Ezzq8DGicGD+PuUkUiTtTU3Yc95IMc66/Txe/iNxGTxckPu60RQw8zphvVqYiRfTg==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Webather </title>
+</head>
+
+<body>
+  <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+    <div class="container">
+      <a href="../" class="navbar-brand">Webather <span style="color: rgb(39, 117, 161);"> <strong> - A weather detecting solution</strong>
+        </span> </a>
+      <a href="https://openweathermap.org" class="navbar-tech">OpenWeather - Get Your API</a>
+    </div>
+  </div>
+
+  <br /><br /> <br>
+  <div id="jumbotron" class="jumbotron" style="text-align: center; margin-top:-0px">
+    <h1 class="display-5" style="color : #191970"><strong> Weather Web App </strong></h1>
+    <div id="img">
+
+        <!--Image of the Tribute Person-->
+        <small id="caption">
+            A futuristic application to detect all weather related phonemena, anywhere and anytime in the world.
+        </small><br>
+        <small id="caption">
+          Although most of us are accustomed to knowing the weather using a various contemporary applications,<br>
+          our application can provide tumultuous data in just one click!<br>
+          Ranging from wind speed to sunrise and sunset time we can access every and 
+          all possible derived data from the dataset!<br><br>
+          Make sure to let us know your feedback!<br>
+          <strong>-Team 26</strong>
+      </small>
+    </div>
+    
+    <h6>Using Python Language and Django Framework</h6>
+    <br> 
+    <div class="row">
+      <div class="col d-flex justify-content-lg-evenly" >
+        <div class=" card text-white bg-dark mb-3">
+        <div class=" card-body">
+          <p>
+              <strong>Application developed by Team 26</strong><br><br>
+              ☛ Kota Yashwanth.<br><br>
+              ☛ Shreyak Banisetti.<br><br>
+              ☛ Abdul Jawwad.
+              <br><br> ☛ Vijay Kiran
+              <br><br> ☛ Akil Krishna
+              <br><br>
+          </p>
+      </div>
+      </div>
+</div>
+
+<div>
+    <img src="{% static 'images/weather1.png' %}" class="image" style="width:200px; margin-bottom:50px; margin-top: 50px; ">
+</div>
+<br> <br>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <form method="post" class="col-md"">
+      {% csrf_token %}
+      <div class=" input-group">
+
+      <input type="text" class="form-control" name="city" placeholder="Choose Your City ...">
+      <div class="input-group-btn">
+        <button type="submit" class="btn btn-primary">Search</button>
+      </div>
+      </div>
+      <form>
+  </nav>
+  <br /> <br />
+
+  <div>
+    To download our alternate beta web page, click  <a href="https://github.com/shreyakjr10/26_hackathon_PS2/blob/main/hackathon_zip.zip">here.</a>
+</div><br><br><br>
+  <div class="row">
+    {% if country_code and coordinate and temp and pressure and humidity %}
+    <div class="col d-flex justify-content-center" ">
+      <div class=" card text-white bg-dark mb-6">
+      <div class=" card-body"> 
+        <h4><span class="badge badge-primary bg-primary">City :</span> {{city_name}}</h4>
+        <h4><span class="badge badge-primary bg-primary">Country Code :</span> {{country_code}}</h4>
+        <h4><span class="badge badge-primary bg-primary">Coordinates [X,Y] :</span> {{coordinate}}</h4>
+        <h4><span class="badge badge-primary bg-primary">Temperature in Celsius :</span> {{temp}}</h4>
+        <h4><span class="badge badge-primary bg-primary">Pressure :</span> {{pressure}} </h4>
+        <h4><span class="badge badge-primary bg-primary">Humidity : </span> {{humidity}}</h4>
+        <h4><span class="badge badge-primary bg-primary">Wind Speed : </span> {{wind_speed}}</h4>
+        <h4><span class="badge badge-primary bg-primary">Sunrise : </span> {{sunrise_time}}</h4>
+        <h4><span class="badge badge-primary bg-primary">Sunset : </span> {{sunset_time}}</h4>
+        <h4><span class="badge badge-primary bg-primary">Forecast : </span> {{main}} <img
+            src="http://openweathermap.org/img/w/{{icon}}.png" alt="Image" style="width:70px"></h4>
+        <h4><span class="badge badge-primary bg-primary">Description : </span> {{description}}</h4>
+      </div>
+      {% endif %}
+    </div><br> <br>
+   
+</body>
+
+</html>
